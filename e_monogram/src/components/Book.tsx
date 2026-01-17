@@ -1,69 +1,67 @@
+import { useMemo } from 'react'
 import HTMLFlipBook from 'react-pageflip'
-import backgroundImage from '../assets/images.png'
+import { getPages } from './Pages'
 import './Book.css'
 
-function Book() {
+interface BookProps {
+  startFromEnd: boolean
+}
+
+function Book({ startFromEnd }: BookProps) {
+  // Get pages and arrange based on reading direction
+  // Forward: Cover → Nina's story → Combination
+  // Backward: Cover → Jianda's story → Combination
+  const pages = useMemo(() => {
+    const allPages = getPages()
+
+    if (!startFromEnd) {
+      // Forward reading: Cover → Nina's → Combination
+      // Filter to include Cover, Nina's section, and Combination section
+      return allPages.filter(
+        (page) =>
+          page.section === 'cover' ||
+          page.section === 'nina' ||
+          page.section === 'combination'
+      )
+    } else {
+      // Backward reading: Cover → Jianda's → Combination
+      // Extract pages in the correct order: Cover first, then Jianda's, then Combination
+      const coverPage = allPages.find((page) => page.section === 'cover')
+      const jiandaPages = allPages.filter((page) => page.section === 'jianda')
+      const combinationPages = allPages.filter(
+        (page) => page.section === 'combination'
+      )
+      const pages = [coverPage, ...jiandaPages, ...combinationPages]
+      pages.reverse()
+      return pages
+    }
+  }, [startFromEnd])
+
   return (
     <div className="book-container">
-      <HTMLFlipBook
-        width={350}
-        height={550}
-        minWidth={250}
-        maxWidth={500}
-        minHeight={400}
-        maxHeight={700}
-        size="stretch"
-        drawShadow={true}
-        showCover={true}
-        mobileScrollSupport={true}
-        className="book"
-      >
-        {/* Page 1 - Background Image */}
-        <div className="page page-cover">
-          <div 
-            className="page-content page-background"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-            }}
-          />
-        </div>
-
-        {/* Page 2 */}
-        <div className="page">
-          <div className="page-content">
-            <h2>Page 2</h2>
-            <p>Welcome to the monogram book</p>
-            <p>This is a mock page for testing pagination.</p>
-          </div>
-        </div>
-
-        {/* Page 3 */}
-        <div className="page">
-          <div className="page-content">
-            <h2>Page 3</h2>
-            <p>Continue reading...</p>
-            <p>Turn the page to see more content.</p>
-          </div>
-        </div>
-
-        {/* Page 4 */}
-        <div className="page">
-          <div className="page-content">
-            <h2>Page 4</h2>
-            <p>More story content here.</p>
-            <p>The book continues to unfold.</p>
-          </div>
-        </div>
-
-        {/* Page 5 */}
-        <div className="page">
-          <div className="page-content">
-            <h2>Page 5</h2>
-            <p>Final mock page</p>
-            <p>This completes the initial pagination test.</p>
-          </div>
-        </div>
-      </HTMLFlipBook>
+      {pages &&
+        (
+          // @ts-expect-error - react-pageflip types may not be fully compatible
+          <HTMLFlipBook
+            width={350}
+            height={550}
+            minWidth={250}
+            maxWidth={500}
+            minHeight={400}
+            maxHeight={700}
+            size="stretch"
+            drawShadow={true}
+            showCover={true}
+            mobileScrollSupport={true}
+            className="book"
+            startPage={startFromEnd ? pages.length - 1 : 0}
+          >
+            {pages.map((page) => page && (
+              <div key={page.id}>{page.content}</div>
+            ))}
+          </HTMLFlipBook>
+        )
+      }
     </div>
   )
 }
