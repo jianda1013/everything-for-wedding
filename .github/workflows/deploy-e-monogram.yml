@@ -33,9 +33,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./e_monogram
-        run: |
-          rm -rf node_modules
-          npm install
+        run: npm ci
 
       - name: Build project
         working-directory: ./e_monogram
