@@ -1,4 +1,6 @@
+import { useMemo } from 'react'
 import backgroundImage from '../assets/images.png'
+import { useI18n } from '../i18n/context'
 import './Book.css'
 
 interface PageData {
@@ -47,59 +49,63 @@ function createPage(
     }
 }
 
-export function getPages(): PageData[] {
-    // Cover page
-    const coverPage = createPage(1, 'cover', '', [])
+export function usePages(): PageData[] {
+    const { t } = useI18n()
 
-    // Nina's story pages (2-3 pages)
-    const ninaPages: PageData[] = [
-        createPage(2, 'nina', "Nina's Story - Beginning", [
-            'Nina was born in Beidou, Changhua, a small town in Taiwan.',
-            'Growing up in a close-knit family, she learned the values of love and togetherness.',
-        ]),
-        createPage(3, 'nina', "Nina's Family", [
-            'Her family includes Grandpa, Grandma, Dad, and Mom.',
-            'She has an older sister who passed away when Nina was 5, and a younger brother, 5 years younger.',
-        ]),
-        createPage(4, 'nina', "Nina's Journey", [
-            'Through life\'s ups and downs, Nina learned to cherish every moment.',
-            'Her experiences shaped her into the person she is today.',
-        ]),
-    ]
+    return useMemo(() => {
+        // Cover page
+        const coverPage = createPage(1, 'cover', '', [])
 
-    // Combination part pages (2-3 pages) - where stories meet
-    const combinationPages: PageData[] = [
-        createPage(5, 'combination', 'When Two Paths Meet', [
-            'In life\'s journey, two separate paths began to converge.',
-            'Nina and Jianda\'s stories were about to intertwine.',
-        ]),
-        createPage(6, 'combination', 'The Meeting', [
-            'When Jianda and Nina met, their individual stories merged into one.',
-            'Two lives became connected, creating a new chapter together.',
-        ]),
-        createPage(7, 'combination', 'Together', [
-            'From this point forward, their stories combine into one beautiful narrative.',
-            'Two hearts, one journey, an unending story of love.',
-        ]),
-    ]
+        // Nina's story pages (2-3 pages)
+        const ninaPages: PageData[] = [
+            createPage(2, 'nina', t('book.nina.beginning.title'), [
+                t('book.nina.beginning.paragraph1'),
+                t('book.nina.beginning.paragraph2'),
+            ]),
+            createPage(3, 'nina', t('book.nina.family.title'), [
+                t('book.nina.family.paragraph1'),
+                t('book.nina.family.paragraph2'),
+            ]),
+            createPage(4, 'nina', t('book.nina.journey.title'), [
+                t('book.nina.journey.paragraph1'),
+                t('book.nina.journey.paragraph2'),
+            ]),
+        ]
 
-    // Jianda's story pages (2-3 pages)
-    const jiandaPages: PageData[] = [
-        createPage(8, 'jianda', "Jianda's Story - Beginning", [
-            'Jianda was born in Dalin, Chiay, a small town in Taiwan.',
-            'From a young age, he learned the importance of family and hard work.',
-        ]),
-        createPage(9, 'jianda', "Jianda's Family", [
-            'His family includes Dad (Air-Conditioner worker, fierce looking, likes to farm),',
-            'Mom (full-time housewife, kind to everyone, good at cooking),',
-            'and an older sister, 3 years older (grown up together, Pharmacy PhD now).',
-        ]),
-        createPage(10, 'jianda', "Jianda's Journey", [
-            'His Grandma, who took good care of him when he was small,',
-            'passed away when Jianda was in college, leaving lasting memories.',
-        ]),
-    ]
+        // Combination part pages (2-3 pages) - where stories meet
+        const combinationPages: PageData[] = [
+            createPage(5, 'combination', t('book.combination.whenTwoPathsMeet.title'), [
+                t('book.combination.whenTwoPathsMeet.paragraph1'),
+                t('book.combination.whenTwoPathsMeet.paragraph2'),
+            ]),
+            createPage(6, 'combination', t('book.combination.theMeeting.title'), [
+                t('book.combination.theMeeting.paragraph1'),
+                t('book.combination.theMeeting.paragraph2'),
+            ]),
+            createPage(7, 'combination', t('book.combination.together.title'), [
+                t('book.combination.together.paragraph1'),
+                t('book.combination.together.paragraph2'),
+            ]),
+        ]
 
-    // Combine all pages in order: Cover → Nina's → Combination → Jianda's
-    return [coverPage, ...ninaPages, ...combinationPages, ...jiandaPages]
+        // Jianda's story pages (2-3 pages)
+        const jiandaPages: PageData[] = [
+            createPage(8, 'jianda', t('book.jianda.beginning.title'), [
+                t('book.jianda.beginning.paragraph1'),
+                t('book.jianda.beginning.paragraph2'),
+            ]),
+            createPage(9, 'jianda', t('book.jianda.family.title'), [
+                t('book.jianda.family.paragraph1'),
+                t('book.jianda.family.paragraph2'),
+                t('book.jianda.family.paragraph3'),
+            ]),
+            createPage(10, 'jianda', t('book.jianda.journey.title'), [
+                t('book.jianda.journey.paragraph1'),
+                t('book.jianda.journey.paragraph2'),
+            ]),
+        ]
+
+        // Combine all pages in order: Cover → Nina's → Combination → Jianda's
+        return [coverPage, ...ninaPages, ...combinationPages, ...jiandaPages]
+    }, [t])
 }

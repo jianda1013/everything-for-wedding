@@ -1,0 +1,88 @@
+{
+  "landing": {
+    "title": "E-Monogram",
+    "weddingInfoLink": "Wedding Information",
+    "subtitle": "Choose how you'd like to begin reading",
+    "startFromBeginning": "Start from Beginning",
+    "readNinaStory": "Read Nina's story",
+    "startFromEnd": "Start from End",
+    "readJiandaStory": "Read Jianda's story"
+  },
+  "book": {
+    "nina": {
+      "beginning": {
+        "title": "Nina's Story - Beginning",
+        "paragraph1": "Nina was born in Beidou, Changhua, a small town in Taiwan.",
+        "paragraph2": "Growing up in a close-knit family, she learned the values of love and togetherness."
+      },
+      "family": {
+        "title": "Nina's Family",
+        "paragraph1": "Her family includes Grandpa, Grandma, Dad, and Mom.",
+        "paragraph2": "She has an older sister who passed away when Nina was 5, and a younger brother, 5 years younger."
+      },
+      "journey": {
+        "title": "Nina's Journey",
+        "paragraph1": "Through life's ups and downs, Nina learned to cherish every moment.",
+        "paragraph2": "Her experiences shaped her into the person she is today."
+      }
+    },
+    "combination": {
+      "whenTwoPathsMeet": {
+        "title": "When Two Paths Meet",
+        "paragraph1": "In life's journey, two separate paths began to converge.",
+        "paragraph2": "Nina and Jianda's stories were about to intertwine."
+      },
+      "theMeeting": {
+        "title": "The Meeting",
+        "paragraph1": "When Jianda and Nina met, their individual stories merged into one.",
+        "paragraph2": "Two lives became connected, creating a new chapter together."
+      },
+      "together": {
+        "title": "Together",
+        "paragraph1": "From this point forward, their stories combine into one beautiful narrative.",
+        "paragraph2": "Two hearts, one journey, an unending story of love."
+      }
+    },
+    "jianda": {
+      "beginning": {
+        "title": "Jianda's Story - Beginning",
+        "paragraph1": "Jianda was born in Dalin, Chiay, a small town in Taiwan.",
+        "paragraph2": "From a young age, he learned the importance of family and hard work."
+      },
+      "family": {
+        "title": "Jianda's Family",
+        "paragraph1": "His family includes Dad (Air-Conditioner worker, fierce looking, likes to farm),",
+        "paragraph2": "Mom (full-time housewife, kind to everyone, good at cooking),",
+        "paragraph3": "and an older sister, 3 years older (grown up together, Pharmacy PhD now)."
+      },
+      "journey": {
+        "title": "Jianda's Journey",
+        "paragraph1": "His Grandma, who took good care of him when he was small,",
+        "paragraph2": "passed away when Jianda was in college, leaving lasting memories."
+      }
+    }
+  },
+  "weddingInfo": {
+    "backButton": "← Back to Landing Page",
+    "title": "Wedding Information",
+    "dateTime": {
+      "sectionTitle": "📅 Date & Time",
+      "weddingDate": "Wedding Date:",
+      "ceremonyTime": "Ceremony Time:",
+      "receptionTime": "Reception Time:"
+    },
+    "location": {
+      "sectionTitle": "📍 Location",
+      "hotelVenue": "Hotel/Venue:",
+      "address": "Address:",
+      "mapTitle": "Wedding Venue Location"
+    },
+    "traffic": {
+      "sectionTitle": "🚗 Traffic Suggestions"
+    },
+    "dressCode": {
+      "sectionTitle": "👔 Dress Code",
+      "request": "We request our guests to dress in:"
+    }
+  }
+}

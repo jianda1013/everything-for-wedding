@@ -1,18 +1,26 @@
-import { useMemo } from 'react'
+import { useMemo, useRef, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import HTMLFlipBook from 'react-pageflip'
-import { getPages } from './Pages'
+import { usePages } from './Pages'
 import './Book.css'
 
-interface BookProps {
-  startFromEnd: boolean
-}
+function Book() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const flipBookRef = useRef<any>(null)
+  const allPages = usePages()
 
-function Book({ startFromEnd }: BookProps) {
+  // Get direction from query params, default to 'forward'
+  const direction = searchParams.get('direction') || 'forward'
+  const startFromEnd = direction === 'backward'
+
+  // Get page number from query params
+  const pageParam = searchParams.get('page')
+  const initialPage = pageParam ? parseInt(pageParam, 10) : undefined
+
   // Get pages and arrange based on reading direction
   // Forward: Cover → Nina's story → Combination
   // Backward: Cover → Jianda's story → Combination
   const pages = useMemo(() => {
-    const allPages = getPages()
 
     if (!startFromEnd) {
       // Forward reading: Cover → Nina's → Combination
@@ -35,33 +43,72 @@ function Book({ startFromEnd }: BookProps) {
       pages.reverse()
       return pages
     }
-  }, [startFromEnd])
+  }, [startFromEnd, allPages])
+
+  // Calculate start page
+  const startPage = useMemo(() => {
+    if (initialPage !== undefined && !isNaN(initialPage)) {
+      // Ensure page is within valid range
+      return Math.max(0, Math.min(initialPage, pages.length - 1))
+    }
+    return startFromEnd ? pages.length - 1 : 0
+  }, [initialPage, startFromEnd, pages.length])
+
+  // Update URL when page changes
+  const handlePageFlip = (e: any) => {
+    const newPage = typeof e === 'number' ? e : (e?.data ?? e?.page ?? 0)
+    const currentPageFromUrl = searchParams.get('page')
+    const currentPageNum = currentPageFromUrl ? parseInt(currentPageFromUrl, 10) : startPage
+    
+    // Only update if page actually changed
+    if (newPage !== currentPageNum && !isNaN(newPage)) {
+      setSearchParams((prev: URLSearchParams) => {
+        const newParams = new URLSearchParams(prev)
+        newParams.set('page', newPage.toString())
+        return newParams
+      }, { replace: true })
+    }
+  }
+
+  // Sync page when URL changes (for back/forward navigation)
+  useEffect(() => {
+    if (flipBookRef.current && initialPage !== undefined && !isNaN(initialPage)) {
+      const pageToGo = Math.max(0, Math.min(initialPage, pages.length - 1))
+      const flipBook = flipBookRef.current.pageFlip || flipBookRef.current
+      if (flipBook && typeof flipBook.flip === 'function') {
+        // Small delay to ensure the component is fully mounted
+        setTimeout(() => {
+          flipBook.flip(pageToGo)
+        }, 100)
+      }
+    }
+  }, [initialPage, pages.length, startPage])
 
   return (
     <div className="book-container">
-      {pages &&
-        (
-          // @ts-expect-error - react-pageflip types may not be fully compatible
-          <HTMLFlipBook
-            width={350}
-            height={550}
-            minWidth={250}
-            maxWidth={500}
-            minHeight={400}
-            maxHeight={700}
-            size="stretch"
-            drawShadow={true}
-            showCover={true}
-            mobileScrollSupport={true}
-            className="book"
-            startPage={startFromEnd ? pages.length - 1 : 0}
-          >
-            {pages.map((page) => page && (
-              <div key={page.id}>{page.content}</div>
-            ))}
-          </HTMLFlipBook>
-        )
-      }
+      {pages && (
+        // @ts-expect-error - react-pageflip types may not be fully compatible
+        <HTMLFlipBook
+          ref={flipBookRef}
+          width={350}
+          height={550}
+          minWidth={250}
+          maxWidth={500}
+          minHeight={400}
+          maxHeight={700}
+          size="stretch"
+          drawShadow={true}
+          showCover={true}
+          mobileScrollSupport={true}
+          className="book"
+          startPage={startPage}
+          onFlip={handlePageFlip}
+        >
+          {pages.map((page) => page && (
+            <div key={page.id}>{page.content}</div>
+          ))}
+        </HTMLFlipBook>
+      )}
     </div>
   )
 }

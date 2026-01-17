@@ -11,6 +11,15 @@ user will keep turn the page to read the book. and the story will meet together 
 
 After that the story combine together into one.
 
+## Page description
+- landing page
+- stories
+  - Nina's story
+  - Jianda's story
+  - Both story
+- wedding infos
+- special thanks
+
 ## Tech target
 - react typescript with vite base
 - book styled webpage
