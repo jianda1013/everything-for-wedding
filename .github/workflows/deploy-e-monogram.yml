@@ -37,6 +37,8 @@ jobs:
 
       - name: Build project
         working-directory: ./e_monogram
+        env:
+          VITE_BASE_PATH: /everything-for-wedding/
         run: npm run build
 
       - name: Setup Pages
