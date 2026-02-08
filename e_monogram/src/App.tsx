@@ -1,30 +1,22 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { I18nProvider } from './i18n/context'
-import Book from './components/Book'
-import LandingPage from './components/LandingPage'
-import WeddingInfo from './components/WeddingInfo'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import StoryPage from "./pages/StoryPage/StoryPage";
+import Layout from "./layout/Layout";
+import ScrollToAnchor from "./components/ScrollToAnchor";
 
 function App() {
   return (
-    <I18nProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ScrollToAnchor />
+      <Layout>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route 
-            path="/book" 
-            element={
-              <div className="app">
-                <Book />
-              </div>
-            } 
-          />
-          <Route path="/wedding-info" element={<WeddingInfo />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/home" element={<LandingPage />} />
+          <Route path="/story" element={<StoryPage />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
-      </BrowserRouter>
-    </I18nProvider>
-  )
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

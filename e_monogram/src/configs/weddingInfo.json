@@ -1,43 +1,39 @@
 {
-    "TZ": "UTC+8",
-    "date": "2026-03-14",
-    "ceremonyTime": "10:30",
-    "receptionTime": "12:00",
-    "dress_code": "To Be Announced",
-    "hotel": {
-        "location": {
-            "name": "嘉義長榮文苑酒店",
-            "address": "61248嘉義縣太保市故宮大道777號"
+  "TZ": "UTC+8",
+  "date": "2026-03-14",
+  "ceremonyTime": "10:30",
+  "receptionTime": "12:00",
+  "dress_code": "To Be Announced",
+  "hotel": {
+    "location": {
+      "name": "嘉義長榮文苑酒店",
+      "address": "61248嘉義縣太保市故宮大道777號"
+    },
+    "map": {
+      "url": "https://maps.app.goo.gl/SkBkmpkKRWvy8m7g7",
+      "latitude": 23.468619476931224,
+      "longitude": 120.29496188278256
+    },
+    "traffic": {
+      "extra_instructions": "停車場位於酒店地下一樓",
+      "suggestions": [
+        {
+          "title": "高鐵嘉義站2號出口",
+          "description": "106、166、168、7235、台灣好行33  → 故宮南院站"
         },
-        "map": {
-            "url": "https://maps.app.goo.gl/SkBkmpkKRWvy8m7g7",
-            "latitude": 23.468619476931224,
-            "longitude": 120.29496188278256
+        {
+          "title": "火車站前站出口",
+          "description": "106 → 故宮南院站"
         },
-        "traffic": {
-            "extra_instructions": "長榮文苑酒店提供用餐及房客免費停車服務，停車場位於酒店地下一樓，可由酒店正門的左側進入。",
-            "suggestions": [
-                {
-                    "title": "嘉義高鐵站",
-                    "description": "高鐵嘉義站2號出口，搭乘106、166、168、7235、台灣好行33至故宮南院站下車。"
-                },
-                {
-                    "title": "嘉義火車站",
-                    "description": "火車站後站出口：搭乘BRT 7211、7212至高鐵嘉義站，再於高鐵站2號出口轉乘公車。"
-                },
-                {
-                    "title": "嘉義火車站",
-                    "description": "火車站前站出口：搭乘106至故宮南院站下車。"
-                },
-                {
-                    "title": "自行開車",
-                    "description": "南下 (國道一號)前往西區的北港路159縣道，從國道一號的264-嘉義號出口下交流道，走高鐵大道台18線和故宮大道前往目的地太保市。"
-                },
-                {
-                    "title": "自行開車",
-                    "description": "北上 (國道一號)前往嘉義縣的學府路二段嘉45鄉道，從台82線的14號出口下交流道，繼續走嘉45鄉道前往目的地太保市。"
-                }
-            ]
+        {
+          "title": "自行開車",
+          "description": "南下 (國道一號)前往西區的北港路159縣道，從國道一號的264-嘉義號出口下交流道，走高鐵大道台18線和故宮大道前往目的地太保市。"
+        },
+        {
+          "title": "自行開車",
+          "description": "北上 (國道一號)前往嘉義縣的學府路二段嘉45鄉道，從台82線的14號出口下交流道，繼續走嘉45鄉道前往目的地太保市。"
         }
+      ]
     }
+  }
 }
