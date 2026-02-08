@@ -3,10 +3,10 @@ import {
   HeroContainer,
   StoryTitle,
   CoupleContainer,
-  PersonImage,
-  PersonName,
-  LeftPersonCard,
-  RightPersonCard,
+  // PersonImage,
+  // PersonName,
+  // LeftPersonCard,
+  // RightPersonCard,
 } from "../styles";
 
 const StoryHero: React.FC = () => {
