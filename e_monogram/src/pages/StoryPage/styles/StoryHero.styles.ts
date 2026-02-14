@@ -3,45 +3,93 @@ import styled from "styled-components";
 export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 60px 0;
   width: 100%;
-  background: linear-gradient(to bottom, #d6ddcd 40%, #f9f9f7 40% 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #e3eadf 480px, #f7f7f2 480px);
+`;
+
+export const TitleContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 60px 60px 60px;
+`;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 1;
+  align-items: flex-start;
+`;
+
+export const GroomSectionContainer = styled.div`
+  width: 50%;
+  position: relative;
+  z-index: 1;
+  padding: 0 0 0 60px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BrideSectionContainer = styled.div`
+  width: 50%;
+  position: relative;
+  z-index: 1;
+  padding: 0 60px 0 0;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
 `;
 
 export const StoryTitle = styled.h1`
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
   font-size: 36px;
-  color: #5a4a42; /* Darker earth tone text */
-  margin-bottom: 60px;
+  color: #5a4a42;
+  margin: 0;
   letter-spacing: 2px;
   text-align: center;
 `;
 
-export const CoupleContainer = styled.div`
-  display: flex;
-  position: relative;
-  padding: 0 20px;
-`;
-
-export const PersonCard = styled.div`
-  flex: 1;
+export const GroomContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 24px;
-  z-index: 1;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 40px;
+  position: relative;
+  top: 30px;
+  z-index: 2;
 `;
 
-export const PersonImage = styled.div<{ src?: string }>`
+export const BrideContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 200px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 2;
+`;
+
+export const PersonImage = styled.img`
   width: 300px;
   height: 450px;
-  background-color: #ccc;
-  background-image: url(${(props) => props.src});
-  background-size: cover;
-  background-position: center;
-  border-radius: 4px; /* Slight radius */
+  object-fit: cover;
+  border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 `;
 
 export const PersonName = styled.div`
@@ -60,10 +108,19 @@ export const PersonName = styled.div`
   }
 `;
 
-export const LeftPersonCard = styled(PersonCard)`
-  align-self: flex-start;
-  margin-top: 0px;
-  marigin-right: -240px;
+export const CoupleContainer = styled.div`
+  display: flex;
+  position: relative;
+  padding: 0 20px;
+`;
+
+export const PersonCard = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  z-index: 1;
 `;
 
 export const RightPersonCard = styled(PersonCard)`

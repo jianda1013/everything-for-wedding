@@ -5,7 +5,7 @@ export const MeetingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 60px 20px;
-  background-color: #d8dcd6;
+  background-color: #d6ddcd;
   width: 100%;
   text-align: center;
 `;

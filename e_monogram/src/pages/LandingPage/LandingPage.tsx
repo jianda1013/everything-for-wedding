@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "./components/HeroSection";
-import Divider from "../../components/Devider";
+import Divider from "../../components/Divider";
 import WeddingDetail from "./components/WeddingDetail";
 import Traffic from "./components/Traffic";
 

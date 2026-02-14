@@ -1,27 +1,24 @@
 import React from "react";
+import GroomSection from "./GroomSection";
+import BrideSection from "./BrideSection";
 import {
   HeroContainer,
+  TitleContainer,
   StoryTitle,
-  CoupleContainer,
-  // PersonImage,
-  // PersonName,
-  // LeftPersonCard,
-  // RightPersonCard,
+  ContentContainer,
 } from "../styles";
+import { Flex } from "../../../components/Flex";
 
 const StoryHero: React.FC = () => {
   return (
     <HeroContainer>
-      <StoryTitle>當「找錯人」遇見「對的人」</StoryTitle>
-      <CoupleContainer>
-        {/* <RightPersonCard>
-          <PersonName>
-            <div>新娘</div>
-            <div>陳怡萱 (Nina)</div>
-          </PersonName>
-          <PersonImage />
-        </RightPersonCard> */}
-      </CoupleContainer>
+      <TitleContainer>
+        <StoryTitle>當「找錯人」遇見「對的人」</StoryTitle>
+      </TitleContainer>
+        <ContentContainer>
+        <GroomSection />
+        <BrideSection />
+      </ContentContainer>
     </HeroContainer>
   );
 };

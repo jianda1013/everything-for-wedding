@@ -11,9 +11,9 @@ const MeetingStory: React.FC = () => {
     <MeetingContainer>
       <SectionTitle>我們多次相遇</SectionTitle>
       <StoryText>
-        當年一場面試，讓原本擦身而過的我們在 Discord 意外相遇。
+        當年一場烏龍，讓原本擦身而過的我們在 Discord 意外相遇。
         <br />
-        這烟花虛妙錯誤，讓我們找到了專屬於守護一輩子的彼此。
+        這個荒唐的錯誤，讓我們找到了要攜手守護一輩子的彼此。
       </StoryText>
       <MediaPlaceholder>Meeting Story Image Placeholder</MediaPlaceholder>
     </MeetingContainer>
