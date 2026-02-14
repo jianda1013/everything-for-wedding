@@ -7,7 +7,6 @@ import {
   StoryTitle,
   ContentContainer,
 } from "../styles";
-import { Flex } from "../../../components/Flex";
 
 const StoryHero: React.FC = () => {
   return (
@@ -15,7 +14,7 @@ const StoryHero: React.FC = () => {
       <TitleContainer>
         <StoryTitle>當「找錯人」遇見「對的人」</StoryTitle>
       </TitleContainer>
-        <ContentContainer>
+      <ContentContainer>
         <GroomSection />
         <BrideSection />
       </ContentContainer>

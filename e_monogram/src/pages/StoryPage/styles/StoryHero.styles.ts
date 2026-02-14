@@ -26,6 +26,7 @@ export const ContentContainer = styled.div`
   position: relative;
   z-index: 1;
   align-items: flex-start;
+  padding: 0 120px;
 `;
 
 export const GroomSectionContainer = styled.div`
@@ -99,12 +100,12 @@ export const PersonName = styled.div`
   margin-top: 20px;
 
   & > div:first-child {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 8px;
   }
 
   & > div:last-child {
-    font-size: 24px;
+    font-size: 36px;
   }
 `;
 
