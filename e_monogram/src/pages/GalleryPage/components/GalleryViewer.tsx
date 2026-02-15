@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ViewerContainer,
   MainImageContainer,
@@ -7,61 +7,93 @@ import {
   Thumbnail,
 } from "../styles";
 
-// Mock data
-const MOCK_IMAGES = [
-  {
-    id: 1,
-    url: "https://placehold.co/800x600/e3eadf/262815?text=Photo+1",
-    title: "Photo 1",
+// Load images dynamically
+const modules = import.meta.glob<string>("../../../assets/galleries/*.webp", {
+  query: "?url",
+  import: "default",
+  eager: true,
+});
+
+interface GalleryImage {
+  id: number;
+  url: string;
+  title: string;
+}
+
+// Convert to array of objects
+const GALLERY_IMAGES: GalleryImage[] = Object.entries(modules).map(
+  ([, url], index) => {
+    return {
+      id: index + 1,
+      url: url,
+      title: `Photo ${index + 1}`,
+    };
   },
-  {
-    id: 2,
-    url: "https://placehold.co/800x600/f7f7f2/5a4a42?text=Photo+2",
-    title: "Photo 2",
-  },
-  {
-    id: 3,
-    url: "https://placehold.co/800x600/d4e0d0/262815?text=Photo+3",
-    title: "Photo 3",
-  },
-  {
-    id: 4,
-    url: "https://placehold.co/800x600/e8e8e8/5a4a42?text=Photo+4",
-    title: "Photo 4",
-  },
-  {
-    id: 5,
-    url: "https://placehold.co/800x600/f0f4f0/262815?text=Photo+5",
-    title: "Photo 5",
-  },
-  {
-    id: 6,
-    url: "https://placehold.co/800x600/ffffff/5a4a42?text=Photo+6",
-    title: "Photo 6",
-  },
-];
+);
 
 const GalleryViewer: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState(MOCK_IMAGES[0]);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage>(
+    GALLERY_IMAGES[0],
+  );
+
+  useEffect(() => {
+    if (GALLERY_IMAGES.length > 0) {
+      setSelectedImage(GALLERY_IMAGES[0]);
+    }
+  }, []);
+
+  if (GALLERY_IMAGES.length === 0) {
+    return <div>No images found</div>;
+  }
 
   return (
     <ViewerContainer>
       <MainImageContainer>
-        <MainImage src={selectedImage.url} alt={selectedImage.title} />
+        <MainImage src={selectedImage?.url} alt={selectedImage?.title} />
       </MainImageContainer>
       <ThumbnailList>
-        {MOCK_IMAGES.map((image) => (
-          <Thumbnail
+        {GALLERY_IMAGES.map((image) => (
+          <ThumbnailItem
             key={image.id}
-            src={image.url}
-            alt={image.title}
-            $active={selectedImage.id === image.id}
-            onClick={() => setSelectedImage(image)}
+            image={image}
+            isSelected={selectedImage?.id === image.id}
+            onClick={setSelectedImage}
           />
         ))}
       </ThumbnailList>
     </ViewerContainer>
   );
 };
+
+// Memoized Thumbnail Component to prevent unnecessary re-renders
+const ThumbnailItem = React.memo(
+  ({
+    image,
+    isSelected,
+    onClick,
+  }: {
+    image: GalleryImage;
+    isSelected: boolean;
+    onClick: (image: GalleryImage) => void;
+  }) => {
+    return (
+      <Thumbnail
+        src={image.url}
+        alt={image.title}
+        $active={isSelected}
+        onClick={() => onClick(image)}
+        loading="lazy"
+        width="100"
+        height="100"
+      />
+    );
+  },
+  (prevProps, nextProps) => {
+    return (
+      prevProps.isSelected === nextProps.isSelected &&
+      prevProps.image.id === nextProps.image.id
+    );
+  },
+);
 
 export default GalleryViewer;

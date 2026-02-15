@@ -31,18 +31,42 @@ export const MainImageContainer = styled.div`
 `;
 
 export const MainImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 `;
 
 export const ThumbnailList = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
   gap: 1rem;
   width: 100%;
-  margin: 80px;
+  margin: 40px 0;
+  padding-bottom: 10px;
+
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d4e0d0;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #b8cbb0;
+  }
 `;
 
 export const Thumbnail = styled.img<{ $active: boolean }>`
@@ -54,6 +78,7 @@ export const Thumbnail = styled.img<{ $active: boolean }>`
   opacity: ${(props) => (props.$active ? 1 : 0.7)};
   transition: all 0.3s ease;
   border-radius: 4px;
+  flex-shrink: 0;
 
   &:hover {
     opacity: 1;
