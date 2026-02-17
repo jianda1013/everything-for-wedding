@@ -30,23 +30,9 @@ export const MediaPlaceholder = styled.div`
   width: 100%;
   max-width: 800px;
   height: 400px;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%),
-    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%),
-    linear-gradient(-45deg, transparent 75%, #ccc 75%);
-  background-size: 20px 20px;
-  background-position:
-    0 0,
-    0 10px,
-    10px -10px,
-    -10px 0px;
-  background-color: #fff;
-  border: 2px dashed #999;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #666;
   font-size: 24px;
   font-family: sans-serif;
 `;

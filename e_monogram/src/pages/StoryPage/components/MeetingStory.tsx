@@ -15,7 +15,13 @@ const MeetingStory: React.FC = () => {
         <br />
         這個荒唐的錯誤，讓我們找到了要攜手守護一輩子的彼此。
       </StoryText>
-      <MediaPlaceholder>Meeting Story Image Placeholder</MediaPlaceholder>
+      <MediaPlaceholder>
+        <iframe
+          src="https://drive.google.com/file/d/1hzX1Z6RUPKVkpP8ZdI5ezgMO8sFfIZWM/preview"
+          width="100%"
+          height="100%"
+        />
+      </MediaPlaceholder>
     </MeetingContainer>
   );
 };
