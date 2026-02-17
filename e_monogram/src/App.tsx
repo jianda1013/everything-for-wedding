@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import StoryPage from "./pages/StoryPage/StoryPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
@@ -7,7 +7,7 @@ import ScrollToAnchor from "./components/ScrollToAnchor";
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <ScrollToAnchor />
       <Layout>
         <Routes>
@@ -17,7 +17,7 @@ function App() {
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
