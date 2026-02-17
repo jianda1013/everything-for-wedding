@@ -7,7 +7,7 @@ import ScrollToAnchor from "./components/ScrollToAnchor";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToAnchor />
       <Layout>
         <Routes>
