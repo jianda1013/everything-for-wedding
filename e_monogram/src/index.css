@@ -12,6 +12,12 @@
   font-style: normal;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Montaga, Arial, sans-serif;
   line-height: 1.5;

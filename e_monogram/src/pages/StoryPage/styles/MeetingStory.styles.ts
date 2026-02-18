@@ -8,6 +8,10 @@ export const MeetingContainer = styled.div`
   background-color: #d6ddcd;
   width: 100%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -15,6 +19,10 @@ export const SectionTitle = styled.h2`
   font-size: 32px;
   color: #8b6b5d; /* Accent color */
   margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const StoryText = styled.p`
@@ -24,6 +32,10 @@ export const StoryText = styled.p`
   color: #5a4a42;
   max-width: 600px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const MediaPlaceholder = styled.div`
@@ -35,4 +47,8 @@ export const MediaPlaceholder = styled.div`
   align-items: center;
   font-size: 24px;
   font-family: sans-serif;
+
+  @media (max-width: 768px) {
+    height: 250px;
+  }
 `;
