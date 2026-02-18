@@ -7,39 +7,31 @@ import {
   DressCodeContainer,
   ColorPaletteContainer,
   ColorCircle,
+  ScheduleContent,
 } from "../styles";
 
 const WeddingSchedule: React.FC = () => {
   return (
     <ScheduleContainer>
-      <div
-        style={{
-          padding: "0 84px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          gap: "24px",
-          borderLeft: "1px solid #7E5A40",
-        }}
-      >
+      <ScheduleContent>
         <ScheduleItem>
           <TimeLabel>10:30</TimeLabel>
           <EventLabel>證婚典禮</EventLabel>
         </ScheduleItem>
         <ScheduleItem>
           <TimeLabel>12:00</TimeLabel>
-          <EventLabel>簽到入席</EventLabel>
+          <EventLabel style={{ letterSpacing: "2px" }}>簽到入席</EventLabel>
         </ScheduleItem>
         <ScheduleItem>
           <TimeLabel>12:30</TimeLabel>
-          <EventLabel>準時開席</EventLabel>
+          <EventLabel style={{ letterSpacing: "2px" }}>準時開席</EventLabel>
         </ScheduleItem>
-      </div>
+      </ScheduleContent>
 
       <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
         <DressCodeContainer>
           <TimeLabel>Dress Code</TimeLabel>
-          <EventLabel>淺色服裝</EventLabel>
+          <EventLabel style={{ letterSpacing: "2px" }}>淺色服裝</EventLabel>
         </DressCodeContainer>
         <ColorPaletteContainer>
           <ColorCircle color="#F8F5F2" />

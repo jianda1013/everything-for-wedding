@@ -4,6 +4,10 @@ export const TrafficTitle = styled.h1`
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
   font-size: 76px;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `;
 
 export const TrafficSectionTitle = styled.h2`
@@ -11,6 +15,26 @@ export const TrafficSectionTitle = styled.h2`
   font-size: 32px;
   margin: 0;
   margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+`;
+
+export const TrafficContainer = styled.div`
+  width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  text-align: left;
+  font-size: 32px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+  }
 `;
 
 export const TrafficText = styled.p`

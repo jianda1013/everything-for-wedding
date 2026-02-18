@@ -7,6 +7,10 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 export const FooterText = styled.p`
@@ -15,4 +19,8 @@ export const FooterText = styled.p`
   color: #333;
   margin: 0;
   letter-spacing: 1px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;

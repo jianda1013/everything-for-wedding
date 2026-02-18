@@ -2,15 +2,21 @@ import React from "react";
 import Hotel from "../../../assets/hotel.jpg";
 import WeddingSchedule from "./WeddingSchedule";
 import { Flex } from "../../../components/Flex";
-import { WeddingDetailTitle, HotelName, AddressText } from "../styles";
+import {
+  WeddingDetailTitle,
+  HotelName,
+  AddressText,
+  DetailContent,
+  ResponsiveImage,
+} from "../styles";
 
 const WeddingDetail: React.FC = () => {
   return (
     <div id="details" style={{ padding: "80px 0" }}>
       <WeddingDetailTitle>婚禮資訊</WeddingDetailTitle>
-      <Flex justify="center" align="center" gap="84px">
+      <DetailContent>
         <Flex flex={1} direction="column" gap="54px" align="center">
-          <img src={Hotel} alt="hotel" width={"512px"} height={"512px"} />
+          <ResponsiveImage src={Hotel} alt="hotel" />
           <Flex
             direction="column"
             gap="24px"
@@ -24,7 +30,7 @@ const WeddingDetail: React.FC = () => {
         <Flex flex={1}>
           <WeddingSchedule />
         </Flex>
-      </Flex>
+      </DetailContent>
     </div>
   );
 };

@@ -14,6 +14,12 @@ export const HeroSectionContainer = styled.header`
   color: #fff;
   gap: 32px;
   padding-bottom: 54px;
+
+  @media (max-width: 768px) {
+    height: 100vh;
+    padding-bottom: 32px;
+    gap: 16px;
+  }
 `;
 
 export const HeroTitle = styled.div`
@@ -22,6 +28,10 @@ export const HeroTitle = styled.div`
   margin: 0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   font-family: Montaga, Arial, sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 export const HeroDate = styled.div`
@@ -29,4 +39,8 @@ export const HeroDate = styled.div`
   letter-spacing: 0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;

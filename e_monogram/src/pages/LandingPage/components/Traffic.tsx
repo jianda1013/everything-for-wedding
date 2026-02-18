@@ -5,6 +5,7 @@ import {
   TrafficSectionTitle,
   TrafficText,
   MapButton,
+  TrafficContainer,
 } from "../styles";
 import weddingInfo from "../../../configs/weddingInfo.json";
 
@@ -22,13 +23,7 @@ const Traffic: React.FC = () => {
     <Flex direction="column" align="center" padding="96px 0" gap="64px">
       <TrafficTitle>交通資訊</TrafficTitle>
 
-      <Flex
-        direction="column"
-        align="flex-start"
-        gap="48px"
-        width="840px"
-        style={{ textAlign: "left", fontSize: "32px" }}
-      >
+      <TrafficContainer>
         {/* Driving */}
         <Flex direction="column" align="flex-start">
           <TrafficSectionTitle>【自行前往】</TrafficSectionTitle>
@@ -61,7 +56,7 @@ const Traffic: React.FC = () => {
             ))}
           </Flex>
         </Flex>
-      </Flex>
+      </TrafficContainer>
     </Flex>
   );
 };

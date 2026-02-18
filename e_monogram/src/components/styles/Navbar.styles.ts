@@ -10,6 +10,11 @@ export const NavbarContainer = styled.nav`
   top: 0;
   width: 100%;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
 `;
 
 import { Link } from "react-router-dom";
