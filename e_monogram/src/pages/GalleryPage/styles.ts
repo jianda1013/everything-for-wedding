@@ -8,6 +8,10 @@ export const GalleryContainer = styled.div`
   min-height: 100vh;
   padding-top: 112px;
   background-color: #f6f7f1;
+
+  @media (max-width: 768px) {
+    padding-top: 80px;
+  }
 `;
 
 export const ViewerContainer = styled.div`
@@ -17,6 +21,10 @@ export const ViewerContainer = styled.div`
   width: 100%;
   max-width: 1000px;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 `;
 
 export const MainImageContainer = styled.div`
@@ -28,6 +36,10 @@ export const MainImageContainer = styled.div`
   background-color: #e3eadf;
   border-radius: 4px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
 `;
 
 export const MainImage = styled.img`
@@ -67,6 +79,11 @@ export const ThumbnailList = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #b8cbb0;
   }
+
+  @media (max-width: 768px) {
+    margin: 24px 0;
+    gap: 0.5rem;
+  }
 `;
 
 export const Thumbnail = styled.img<{ $active: boolean }>`
@@ -84,12 +101,21 @@ export const Thumbnail = styled.img<{ $active: boolean }>`
     opacity: 1;
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 export const PageTitle = styled.div`
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
   font-size: 56px;
   color: #7e5a40;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 export const SubTitle = styled.div`
@@ -98,4 +124,9 @@ export const SubTitle = styled.div`
   color: #7e5a40;
   margin: 24px 0;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin: 16px 0;
+  }
 `;
