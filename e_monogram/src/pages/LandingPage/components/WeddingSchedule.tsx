@@ -9,8 +9,15 @@ import {
   ColorCircle,
   ScheduleContent,
 } from "../styles";
+import useScrollVisible from "../../../hooks/useScrollVisible";
+
+const PALETTE_COLORS = ["#F8F5F2", "#F2E3D5", "#D3C2B2", "#C7CCB1", "#6B705C"];
 
 const WeddingSchedule: React.FC = () => {
+  const [paletteRef, visible] = useScrollVisible<HTMLDivElement>({
+    repeat: true,
+  });
+
   return (
     <ScheduleContainer>
       <ScheduleContent>
@@ -33,12 +40,15 @@ const WeddingSchedule: React.FC = () => {
           <TimeLabel>Dress Code</TimeLabel>
           <EventLabel style={{ letterSpacing: "2px" }}>淺色服裝</EventLabel>
         </DressCodeContainer>
-        <ColorPaletteContainer>
-          <ColorCircle color="#F8F5F2" />
-          <ColorCircle color="#F2E3D5" />
-          <ColorCircle color="#D3C2B2" />
-          <ColorCircle color="#C7CCB1" />
-          <ColorCircle color="#6B705C" />
+        <ColorPaletteContainer ref={paletteRef}>
+          {PALETTE_COLORS.map((color, i) => (
+            <ColorCircle
+              key={color}
+              color={color}
+              $index={i}
+              $visible={visible}
+            />
+          ))}
         </ColorPaletteContainer>
       </div>
     </ScheduleContainer>

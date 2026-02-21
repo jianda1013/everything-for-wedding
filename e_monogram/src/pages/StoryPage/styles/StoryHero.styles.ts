@@ -1,4 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+
+const slideInFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 export const HeroContainer = styled.div`
   display: flex;
@@ -43,13 +65,22 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const GroomSectionContainer = styled.div`
+export const GroomSectionContainer = styled.div<{ $visible: boolean }>`
   width: 50%;
   position: relative;
   z-index: 1;
   padding: 0 0 0 60px;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transform: translateX(80px);
+
+  ${({ $visible }) =>
+    $visible &&
+    css`
+      animation: ${slideInFromRight} 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        forwards;
+    `}
 
   @media (max-width: 768px) {
     width: 100%;
@@ -57,7 +88,7 @@ export const GroomSectionContainer = styled.div`
   }
 `;
 
-export const BrideSectionContainer = styled.div`
+export const BrideSectionContainer = styled.div<{ $visible: boolean }>`
   width: 50%;
   position: relative;
   z-index: 1;
@@ -67,6 +98,15 @@ export const BrideSectionContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
+  opacity: 0;
+  transform: translateX(-80px);
+
+  ${({ $visible }) =>
+    $visible &&
+    css`
+      animation: ${slideInFromLeft} 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        0.2s forwards;
+    `}
 
   @media (max-width: 768px) {
     width: 100%;
@@ -94,8 +134,6 @@ export const GroomContent = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 24px;
-  margin-top: 0;
-  padding-top: 0;
   padding-bottom: 40px;
   position: relative;
   top: 30px;
@@ -169,31 +207,5 @@ export const PersonName = styled.div`
     & > div:last-child {
       font-size: 24px;
     }
-  }
-`;
-
-export const CoupleContainer = styled.div`
-  display: flex;
-  position: relative;
-  padding: 0 20px;
-`;
-
-export const PersonCard = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 24px;
-  z-index: 1;
-`;
-
-export const RightPersonCard = styled(PersonCard)`
-  align-self: flex-start;
-  margin-top: 240px;
-  margin-left: -240px;
-
-  @media (max-width: 768px) {
-    margin: 0;
-    align-self: center;
   }
 `;

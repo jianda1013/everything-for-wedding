@@ -7,9 +7,13 @@ import {
   PersonName,
 } from "../styles";
 
-const GroomSection: React.FC = () => {
+interface GroomSectionProps {
+  visible: boolean;
+}
+
+const GroomSection: React.FC<GroomSectionProps> = ({ visible }) => {
   return (
-    <GroomSectionContainer>
+    <GroomSectionContainer $visible={visible}>
       <GroomContent>
         <PersonImage src={groomImage} alt="Groom" />
         <PersonName>

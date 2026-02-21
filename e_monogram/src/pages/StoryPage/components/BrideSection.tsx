@@ -7,9 +7,13 @@ import {
   PersonName,
 } from "../styles";
 
-const BrideSection: React.FC = () => {
+interface BrideSectionProps {
+  visible: boolean;
+}
+
+const BrideSection: React.FC<BrideSectionProps> = ({ visible }) => {
   return (
-    <BrideSectionContainer>
+    <BrideSectionContainer $visible={visible}>
       <BrideContent>
         <PersonName>
           <div>新娘</div>
