@@ -11,6 +11,7 @@ import StoryPage from "./pages/StoryPage/StoryPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import Layout from "./layout/Layout";
 import ScrollToAnchor from "./components/ScrollToAnchor";
+import BackgroundMusic from "./components/BackgroundMusic";
 import styled, { keyframes } from "styled-components";
 
 const fadeUp = keyframes`
@@ -47,6 +48,7 @@ function App() {
   return (
     <HashRouter>
       <ScrollToAnchor />
+      <BackgroundMusic />
       <Layout>
         <AnimatedRoutes />
       </Layout>
