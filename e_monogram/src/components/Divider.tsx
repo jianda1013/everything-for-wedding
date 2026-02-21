@@ -8,7 +8,7 @@ const Divider: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "60px 0",
+        padding: "40px 0",
       }}
     >
       <img src={divider} alt="divider" />

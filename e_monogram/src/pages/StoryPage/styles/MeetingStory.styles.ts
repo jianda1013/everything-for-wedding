@@ -16,7 +16,7 @@ export const MeetingContainer = styled.div`
 
 export const SectionTitle = styled.h2`
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
-  font-size: 32px;
+  font-size: 64px;
   color: #8b6b5d; /* Accent color */
   margin-bottom: 24px;
 
@@ -27,10 +27,10 @@ export const SectionTitle = styled.h2`
 
 export const StoryText = styled.p`
   font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 32px;
   line-height: 1.8;
   color: #5a4a42;
-  max-width: 600px;
+  max-width: 1000px;
   margin-bottom: 40px;
 
   @media (max-width: 768px) {

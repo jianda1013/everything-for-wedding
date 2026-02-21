@@ -12,7 +12,7 @@ import {
 
 const WeddingDetail: React.FC = () => {
   return (
-    <div id="details" style={{ padding: "80px 0" }}>
+    <div id="details" style={{ padding: "40px 0" }}>
       <WeddingDetailTitle>婚禮資訊</WeddingDetailTitle>
       <DetailContent>
         <Flex flex={1} direction="column" gap="54px" align="center">
