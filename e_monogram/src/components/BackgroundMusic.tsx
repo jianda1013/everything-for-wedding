@@ -13,39 +13,47 @@ const BackgroundMusic: React.FC = () => {
 
     audio.volume = 0.45;
 
-    // Step 1: Start muted — browsers allow muted autoplay
-    audio.muted = true;
-    audio
-      .play()
-      .then(() => {
-        // Step 2: Unmute after playback starts
-        audio.muted = false;
-        setPlaying(true);
-      })
-      .catch(() => {
-        // Fallback for iOS / strict browsers: play on first user interaction
-        audio.muted = false;
-        const startOnInteraction = () => {
-          audio
-            .play()
-            .then(() => {
-              setPlaying(true);
-              cleanup();
-            })
-            .catch(() => {});
-        };
-        const cleanup = () => {
-          window.removeEventListener("click", startOnInteraction);
-          window.removeEventListener("touchstart", startOnInteraction);
-          window.removeEventListener("keydown", startOnInteraction);
-        };
-        window.addEventListener("click", startOnInteraction);
-        window.addEventListener("touchstart", startOnInteraction);
-        window.addEventListener("keydown", startOnInteraction);
-        return cleanup;
-      });
+    const tryPlay = () => {
+      // Start muted — browsers allow muted autoplay
+      audio.muted = true;
+      audio
+        .play()
+        .then(() => {
+          audio.muted = false;
+          setPlaying(true);
+        })
+        .catch(() => {
+          // Fallback for iOS / strict browsers: play on first user interaction
+          audio.muted = false;
+          const startOnInteraction = () => {
+            audio
+              .play()
+              .then(() => {
+                setPlaying(true);
+                cleanup();
+              })
+              .catch(() => {});
+          };
+          const cleanup = () => {
+            window.removeEventListener("click", startOnInteraction);
+            window.removeEventListener("touchstart", startOnInteraction);
+            window.removeEventListener("keydown", startOnInteraction);
+          };
+          window.addEventListener("click", startOnInteraction);
+          window.addEventListener("touchstart", startOnInteraction);
+          window.addEventListener("keydown", startOnInteraction);
+        });
+    };
+
+    // If already buffered enough, play immediately; otherwise wait for canplaythrough
+    if (audio.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+      tryPlay();
+    } else {
+      audio.addEventListener("canplaythrough", tryPlay, { once: true });
+    }
 
     return () => {
+      audio.removeEventListener("canplaythrough", tryPlay);
       audio.pause();
     };
   }, []);
