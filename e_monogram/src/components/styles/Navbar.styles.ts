@@ -4,29 +4,27 @@ export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 1.5rem 0;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
   width: 100%;
   z-index: 10;
+  font-family: "ChenYuluoyan 2.0", Arial, sans-serif;
+  background-color: #d6ddcd;
 
   @media (max-width: 768px) {
-    gap: 1rem;
-    padding: 1rem 0;
+    gap: 0rem;
+    margin: 0 0rem;
   }
 `;
 
 import { Link } from "react-router-dom";
 
 export const NavItem = styled(Link)`
+  flex: 1;
   text-transform: uppercase;
-  font-size: 18px;
-  color: #262815;
+  font-size: 64px;
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
-  padding: 12px 12px;
+  color: #4a3b32;
 
   &:hover {
     color:;
@@ -36,6 +34,7 @@ export const NavItem = styled(Link)`
 
   @media (max-width: 768px) {
     font-size: 14px;
-    padding: 12px 8px;
+    padding: 12px 0px;
+    text-align: center;
   }
 `;
